@@ -2,6 +2,7 @@ package com.eugene.userlist.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -46,5 +47,10 @@ public class UserService {
 	
 	public User save(@Valid User user) {
 		return repo.save(user);
+	}
+
+	public User getUserById(String id) {
+		Optional<User> user = repo.findById(id);
+		return user.isPresent() ? user.get() : null;
 	}
 }
