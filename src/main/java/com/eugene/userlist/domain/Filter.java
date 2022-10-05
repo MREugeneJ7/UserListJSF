@@ -9,5 +9,4 @@ public class Filter {
 	String email;
 	LocalDate dateFrom;
 	LocalDate dateTo;
-	
 }

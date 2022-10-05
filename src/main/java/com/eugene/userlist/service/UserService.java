@@ -21,25 +21,27 @@ public class UserService {
 
 	//Could be done with query or specification
 	public List<User> getUserList(LocalDate dateFrom, LocalDate dateTo, String email) {
+		if(email != null)
+			email = "%" + email.trim() + "%";
 		if(dateFrom != null)
 			if(dateTo != null)
-				if(email!=null && !email.trim().equals(""))
+				if(email!=null)
 					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThanAndEmailLike(dateFrom, dateTo, email);
 				else
 					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThan(dateFrom, dateTo);
 			else
-				if(email != null && !email.trim().equals(""))
+				if(email != null)
 					return repo.findAllByBirthDateGreaterThanAndEmailLike(dateFrom, email);
 				else
 					return repo.findAllByBirthDateGreaterThan(dateFrom);
 		else
 			if(dateTo != null)
-				if(email != null && !email.trim().equals(""))
+				if(email != null)
 					return repo.findAllByBirthDateLessThanAndEmailLike(dateTo, email);
 				else
 					return repo.findAllByBirthDateLessThan(dateTo);
 			else
-				if(email != null && !email.trim().equals(""))
+				if(email != null)
 					return repo.findAllByEmailLike(email);
 				else
 					return repo.findAll();
