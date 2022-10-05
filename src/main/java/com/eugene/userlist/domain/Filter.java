@@ -9,9 +9,4 @@ public class Filter {
 	String email;
 	LocalDate dateFrom;
 	LocalDate dateTo;
-	
-	public Filter(){
-		dateFrom = LocalDate.MIN;
-		dateTo = LocalDate.MAX;
-	}
 }

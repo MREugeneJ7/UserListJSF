@@ -1,10 +1,12 @@
 package com.eugene.userlist.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +27,7 @@ public class UserController {
 	UserService service;
 
 	@GetMapping("")
-	public List<User> getUserList(@RequestParam(name="dateFrom", required= false) String dateFrom, @RequestParam(name="dateTo", required= false) String dateTo, @RequestParam(name="email", required= false) String email) {
+	public List<User> getUserList(@RequestParam(name="dateFrom", required= false) LocalDate dateFrom, @RequestParam(name="dateTo", required= false) LocalDate dateTo, @RequestParam(name="email", required= false) String email) {
 		return service.getUserList(dateFrom, dateTo, email);
 	}
 	
@@ -42,5 +44,10 @@ public class UserController {
 	@PutMapping("/{id}")
 	public User updateUser(@Valid @RequestBody User user, @PathVariable String id) {
 		return service.updateUser(user, id);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable String id) {
+		 service.deleteById(id);
 	}
 }
