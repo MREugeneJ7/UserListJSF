@@ -10,8 +10,4 @@ public class Filter {
 	LocalDate dateFrom;
 	LocalDate dateTo;
 	
-	public Filter(){
-		dateFrom = LocalDate.MIN;
-		dateTo = LocalDate.MAX;
-	}
 }

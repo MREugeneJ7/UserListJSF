@@ -1,5 +1,6 @@
 package com.eugene.userlist.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ public class UserController {
 	UserService service;
 
 	@GetMapping("")
-	public List<User> getUserList(@RequestParam(name="dateFrom", required= false) String dateFrom, @RequestParam(name="dateTo", required= false) String dateTo, @RequestParam(name="email", required= false) String email) {
+	public List<User> getUserList(@RequestParam(name="dateFrom", required= false) LocalDate dateFrom, @RequestParam(name="dateTo", required= false) LocalDate dateTo, @RequestParam(name="email", required= false) String email) {
 		return service.getUserList(dateFrom, dateTo, email);
 	}
 	

@@ -24,17 +24,17 @@ public class UserListJSFController {
     @PostConstruct
     public void loadData() {
         filter = new Filter();
-        users = service.getUserList( filter.getDateFrom().toString(), filter.getDateTo().toString(), filter.getEmail());
+        users = service.getUserList( filter.getDateFrom(), filter.getDateTo(), filter.getEmail());
     }
     
     public List<User> getUsers() {
-        users = service.getUserList( filter.getDateFrom().toString(), filter.getDateTo().toString(), filter.getEmail());
+        users = service.getUserList( filter.getDateFrom(), filter.getDateTo(), filter.getEmail());
         return users;
     }
     
     public void remove(User user) {
         service.delete(user);
-        users = service.getUserList( filter.getDateFrom().toString(), filter.getDateTo().toString(), filter.getEmail());
+        users = service.getUserList( filter.getDateFrom(), filter.getDateTo(), filter.getEmail());
     }
 
 	public Filter getFilter() {

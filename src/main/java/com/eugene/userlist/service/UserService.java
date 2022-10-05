@@ -20,24 +20,24 @@ public class UserService {
 	
 
 	//Could be done with query or specification
-	public List<User> getUserList(String dateFrom, String dateTo, String email) {
+	public List<User> getUserList(LocalDate dateFrom, LocalDate dateTo, String email) {
 		if(dateFrom != null)
 			if(dateTo != null)
 				if(email!=null && !email.trim().equals(""))
-					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThanAndEmailLike(LocalDate.parse(dateFrom), LocalDate.parse(dateTo), email);
+					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThanAndEmailLike(dateFrom, dateTo, email);
 				else
-					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThan(LocalDate.parse(dateFrom), LocalDate.parse(dateTo));
+					return repo.findAllByBirthDateGreaterThanAndBirthDateLessThan(dateFrom, dateTo);
 			else
 				if(email != null && !email.trim().equals(""))
-					return repo.findAllByBirthDateGreaterThanAndEmailLike(LocalDate.parse(dateFrom), email);
+					return repo.findAllByBirthDateGreaterThanAndEmailLike(dateFrom, email);
 				else
-					return repo.findAllByBirthDateGreaterThan(LocalDate.parse(dateFrom));
+					return repo.findAllByBirthDateGreaterThan(dateFrom);
 		else
 			if(dateTo != null)
 				if(email != null && !email.trim().equals(""))
-					return repo.findAllByBirthDateLessThanAndEmailLike(LocalDate.parse(dateTo), email);
+					return repo.findAllByBirthDateLessThanAndEmailLike(dateTo, email);
 				else
-					return repo.findAllByBirthDateLessThan(LocalDate.parse(dateTo));
+					return repo.findAllByBirthDateLessThan(dateTo);
 			else
 				if(email != null && !email.trim().equals(""))
 					return repo.findAllByEmailLike(email);
