@@ -53,4 +53,13 @@ public class UserService {
 		Optional<User> user = repo.findById(id);
 		return user.isPresent() ? user.get() : null;
 	}
+	
+	public User updateUser(@Valid User user, String id) {
+		Optional<User> toUpdate = repo.findById(id);
+		if(toUpdate.isPresent()) {
+			user.setId(toUpdate.get().getId());
+			return save(user);
+		}else
+			return null;
+	}
 }
