@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.eugene</groupId>
 	<artifactId>userlist</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-RELEASE</version>
 	<name>UserList</name>
 	<description>Prueba Tecnica</description>
 	<properties>
