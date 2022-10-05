@@ -62,4 +62,8 @@ public class UserService {
 		}else
 			return null;
 	}
+	
+	public void delete(User user) {
+		repo.delete(user);
+	}
 }

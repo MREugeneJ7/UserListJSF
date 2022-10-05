@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<p:panel header="User List">
+				<p:panel header="Filter List" toggleable="true" toggler="header">
+				<h:panelGrid columns="1">
+					<p:outputLabel for="email" value="email: " />
+					<p:inputText id="email" value="#{userList.filter.email}" />
+					<p:outputLabel for="dateFrom" value="From Date: " />
+					<p:inputText id="dateFrom"
+						value="#{userList.filter.dateFrom}">
+						<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+					</p:inputText>
+					<p:outputLabel for="dateTo" value="To Date: " />
+					<p:inputText id="dateTo"
+						value="#{userList.filter.dateTo}">
+						<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+					</p:inputText>
+					<h:commandButton value="Apply Filter" action="#{userList.getUsers()}" />
+				</h:panelGrid>
+			</p:panel>
+				<p:dataTable id="table" var="user" value="#{userList.users}">
+					<p:column headerText="ID">
+						<h:outputText value="#{user.id}" />
+					</p:column>
+
+					<p:column headerText="Name">
+						<h:outputText value="#{user.fullName}" />
+					</p:column>
+					
+					<p:column headerText="Mail">
+						<h:outputText value="#{user.email}" />
+					</p:column>
+
+					<p:column headerText="Birthday">
+						<h:outputText value="#{user.birthDate}" />
+					</p:column>
+
+					<p:column>
+                        <h:commandButton icon="ui-icon-trash"
+                            action="#{userList.remove(user)}" value="Eliminar"/>
+                    </p:column>
+					
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
