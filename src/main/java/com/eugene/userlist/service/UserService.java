@@ -3,6 +3,8 @@ package com.eugene.userlist.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,9 @@ public class UserService {
 					return repo.findAllByEmailLike(email);
 				else
 					return repo.findAll();
+	}
+	
+	public User save(@Valid User user) {
+		return repo.save(user);
 	}
 }
