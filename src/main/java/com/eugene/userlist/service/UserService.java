@@ -66,4 +66,11 @@ public class UserService {
 	public void delete(User user) {
 		repo.delete(user);
 	}
+
+	public void deleteById(String id) {
+		Optional<User> toDelete = repo.findById(id);
+		if(toDelete.isPresent()) 
+			delete(toDelete.get());
+		
+	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,10 @@ public class UserController {
 	@PutMapping("/{id}")
 	public User updateUser(@Valid @RequestBody User user, @PathVariable String id) {
 		return service.updateUser(user, id);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable String id) {
+		 service.deleteById(id);
 	}
 }
